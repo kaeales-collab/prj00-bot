@@ -1,0 +1,25 @@
+name: prj00 system
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: checkout repo
+        uses: actions/checkout@v4
+
+      - name: create log
+        run: |
+          date >> logs/prj00_log.txt
+
+      - name: send telegram message
+        run: |
+          curl -X POST "https://api.telegram.org/bot토큰/sendMessage" \
+          -d chat_id=8664700798 \
+          -d text="PRJ00_LOG_CREATED"
