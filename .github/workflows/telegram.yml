@@ -1,1 +1,16 @@
 
+name: telegram bot
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: send telegram message
+        run: |
+          curl "https://api.telegram.org/8569753840:AAGuept9mD3AG2IAP7TVH-R9Ctt4qHYuDYw/sendMessage?chat_id=8664700798&text=PRJ00 자동실행"
